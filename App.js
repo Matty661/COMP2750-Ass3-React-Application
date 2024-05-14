@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { View, Text, Image, StyleSheet, Picker, Button } from 'react-native';
+import { View, Text, Image, StyleSheet, Button } from 'react-native';
+import { Picker } from '@react-native-picker/picker';
 
 export default function App() {
   const [selectedVegetable, setSelectedVegetable] = useState('');
@@ -42,100 +43,141 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.heading}>Welcome to Snack Expo!!!</Text>
+      
+      <Text style={styles.heading}>Welcome to POGS Online Shopping App</Text>
+      
       <Image source={{ uri: 'https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da84bf5cbd493522068f869afd62' }} style={styles.image} />
+      
       <View style={styles.dropdownContainer}>
+        
         <Text style={styles.dropdownLabel}>Vegetables dropdown:</Text>
+        
         <Picker
-          style={styles.dropdown}
+          style={styles.dropdownProduct}
           selectedValue={selectedVegetable}
           onValueChange={(itemValue) => setSelectedVegetable(itemValue)}
         >
+          
           <Picker.Item label="Select a vegetable" value="" />
+          
           {vegetables.map((vegetable, index) => (
             <Picker.Item key={index} label={`${vegetable.name} - $${vegetable.price}`} value={`${vegetable.name}-$${vegetable.price}`} />
           ))}
+        
         </Picker>
+        
         <Picker
-          style={styles.dropdown}
+          style={styles.dropdownAmt}
           selectedValue={selectedVegetableQuantity}
           onValueChange={(itemValue) => setSelectedVegetableQuantity(itemValue)}
         >
+          
           {[1, 2, 3, 4, 5].map((quantity, index) => (
             <Picker.Item key={index} label={`${quantity}`} value={quantity} />
           ))}
+       
         </Picker>
+      
       </View>
+      
       <View style={styles.dropdownContainer}>
+        
         <Text style={styles.dropdownLabel}>Fruit dropdown:</Text>
+        
         <Picker
-          style={styles.dropdown}
+          style={styles.dropdownProduct}
           selectedValue={selectedFruit}
           onValueChange={(itemValue) => setSelectedFruit(itemValue)}
         >
+          
           <Picker.Item label="Select a fruit" value="" />
+          
           {fruits.map((fruit, index) => (
             <Picker.Item key={index} label={`${fruit.name} - $${fruit.price}`} value={`${fruit.name}-$${fruit.price}`} />
           ))}
+        
         </Picker>
+        
         <Picker
-          style={styles.dropdown}
+          style={styles.dropdownAmt}
           selectedValue={selectedFruitQuantity}
           onValueChange={(itemValue) => setSelectedFruitQuantity(itemValue)}
         >
+          
           {[1, 2, 3, 4, 5].map((quantity, index) => (
             <Picker.Item key={index} label={`${quantity}`} value={quantity} />
           ))}
+        
         </Picker>
+      
       </View>
+      
       <Button title="Calculate" onPress={calculateTotalPrice} />
+      
       <Text style={styles.totalPriceLabel}>Total Cost of Order: ${totalPrice}</Text>
+      
       <Text style={styles.footer}>App developed by Angus, Sunny, Matthew </Text>
+    
     </View>
   );
 }
 
 const styles = StyleSheet.create({
+ 
   container: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: '#add8e6',
   },
+  
   heading: {
-    fontSize: 24,
+    fontSize: 32,
     fontWeight: 'bold',
     marginBottom: 20,
+    textAlign: "Center",
   },
+  
   image: {
     width: 200,
     height: 200,
     marginBottom: 20,
   },
+  
   dropdownContainer: {
     marginBottom: 20,
+    textAlign: "center",
   },
+  
   dropdownLabel: {
     fontSize: 16,
     marginBottom: 5,
+    textAlign: "center",
   },
-  dropdown: {
-    width: 200,
+  
+  dropdownProduct: {
+    width: 250,
     height: 40,
     borderWidth: 1,
     borderColor: 'black',
+    textAlign: "center",
   },
+
+  dropdownAmt: {
+    width: 250,
+    height: 40,
+    borderWidth: 1,
+    borderColor: 'black',
+    textAlign: "center",
+  },
+  
   totalPriceLabel: {
     fontSize: 20,
     marginTop: 20,
     fontWeight: 'bold',
   },
+  
   footer: {
     marginTop: 50,
   },
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#add8e6', // Baby blue color
-  }
 });
