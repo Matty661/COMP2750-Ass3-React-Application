@@ -26,7 +26,7 @@ const fruits = [
 return (
   <View style = {styles}>
 
-  <Text style = {styles.text}> Welcome To The Pogs App </Text>
+  <Text style = {styles.text}> Welcome To The Pogs Online Shopping App </Text>
 
   <Picker style = {styles.pickerStyle} />
     <Picker.Item label = {vegetablesSelectedValue} />
