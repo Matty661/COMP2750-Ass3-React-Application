@@ -57,7 +57,7 @@ export default function App() {
       
       <Text style={styles.heading}>Welcome to POGS Online Shopping App</Text>
       
-      <Image source= "assets\Logo.png" style = {styles.image}/>
+      <Image source= {require("./assets/Logo.png")} style = {styles.image}/>
 
       <View style={styles.dropdownContainer}>
         
