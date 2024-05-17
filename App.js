@@ -3,12 +3,16 @@ import { View, Text, Image, StyleSheet, Button } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 
 export default function App() {
+
+  //Variables all have data which changes, hence the useState. Default useState varies from empty to 0/1.
   const [selectedVegetable, setSelectedVegetable] = useState('');
   const [selectedFruit, setSelectedFruit] = useState('');
   const [selectedVegetableQuantity, setSelectedVegetableQuantity] = useState(1);
   const [selectedFruitQuantity, setSelectedFruitQuantity] = useState(1);
   const [totalPrice, setTotalPrice] = useState(0);
 
+
+  //Initalize Vegetables as array, used as picker items.
   const vegetables = [
     { name: 'Potato', price: 5 },
     { name: 'Carrot', price: 8 },
@@ -17,6 +21,7 @@ export default function App() {
     { name: 'Cucumber', price: 5 }
   ];
 
+  //Initalize Fruits as array, used as picker items.
   const fruits = [
     { name: 'Orange', price: 11 },
     { name: 'Blueberry', price: 12 },
@@ -25,28 +30,34 @@ export default function App() {
     { name: 'Grape', price: 12 }
   ];
 
+  //Function to calculate the price of Vegetables + Fruit Prices and Quantity.
   const calculateTotalPrice = () => {
     let vegetablePrice = 0;
     let fruitPrice = 0;
 
+
+    //A Vegetable is selected
     if (selectedVegetable) {
-      vegetablePrice = parseInt(selectedVegetable.split('-$')[1]);
+      vegetablePrice = parseInt(selectedVegetable.split('-$')[1]); //Split "{Vegetable - $PRICE" to just {PRICE}
     }
 
+    //A Fruit is selected
     if (selectedFruit) {
-      fruitPrice = parseInt(selectedFruit.split('-$')[1]);
+      fruitPrice = parseInt(selectedFruit.split('-$')[1]); //Split "{FRUIT - $PRICE" to just {PRICE}
     }
 
-    const totalPrice = (vegetablePrice * selectedVegetableQuantity) + (fruitPrice * selectedFruitQuantity);
-    setTotalPrice(totalPrice);
+    //Calculate total price of quantity + price. Then intil. as variable. 
+    const totalPrice = (vegetablePrice * selectedVegetableQuantity) + (fruitPrice * selectedFruitQuantity); // Calculate total cost.
+    setTotalPrice(totalPrice); // Set the text to total cost.
   };
 
   return (
+    //Viewing Areas:
     <View style={styles.container}>
       
       <Text style={styles.heading}>Welcome to POGS Online Shopping App</Text>
       
-      <Image source= {{sri: "https://i.imgur.com/PpO0kVq.png" }} />
+      <Image source= "assets\Logo.png" style = {styles.image}/>
 
       <View style={styles.dropdownContainer}>
         
@@ -69,7 +80,7 @@ export default function App() {
         <Picker
           style={styles.dropdownAmt}
           selectedValue={selectedVegetableQuantity}
-          onValueChange={(itemValue) => setSelectedVegetableQuantity(itemValue)}
+          onValueChange={(itemValue) => setSelectedVegetableQuantity(itemValue)} //When the picker option is changed, call function to change item visibilty.  
         >
           
           {[1, 2, 3, 4, 5].map((quantity, index) => (
@@ -129,6 +140,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#add8e6',
+    fontWeight: "200",
   },
   
   heading: {
