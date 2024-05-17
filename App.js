@@ -46,8 +46,8 @@ export default function App() {
       
       <Text style={styles.heading}>Welcome to POGS Online Shopping App</Text>
       
-      <Image source={{ uri: 'https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da84bf5cbd493522068f869afd62' }} style={styles.image} />
-      
+      <Image source= "Logo.png" />
+
       <View style={styles.dropdownContainer}>
         
         <Text style={styles.dropdownLabel}>Vegetables dropdown:</Text>
@@ -137,16 +137,16 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     textAlign: "Center",
   },
-  
+
+  dropdownContainer: {
+    marginBottom: 20,
+    textAlign: "center",
+  },
+
   image: {
     width: 200,
     height: 200,
     marginBottom: 20,
-  },
-  
-  dropdownContainer: {
-    marginBottom: 20,
-    textAlign: "center",
   },
   
   dropdownLabel: {
