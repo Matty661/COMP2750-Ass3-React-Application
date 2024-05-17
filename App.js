@@ -46,7 +46,7 @@ export default function App() {
       
       <Text style={styles.heading}>Welcome to POGS Online Shopping App</Text>
       
-      <Image source= "Logo.png" />
+      <Image source= {{sri: "https://i.imgur.com/PpO0kVq.png" }} />
 
       <View style={styles.dropdownContainer}>
         
