@@ -133,6 +133,7 @@ export default function App() {
   );
 }
 
+//Styling of the App.
 const styles = StyleSheet.create({
  
   container: {
